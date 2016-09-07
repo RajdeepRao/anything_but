@@ -1,3 +1,4 @@
 class Neighborhood < ApplicationRecord
-  has_many :activities
+  has_many :recommendations
+  belongs_to :city
 end
