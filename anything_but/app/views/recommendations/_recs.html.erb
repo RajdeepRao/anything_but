@@ -1,0 +1,9 @@
+
+<h3>Why Don't you go:</h3>
+<% if @recommendation.activity_id.name == 'Nightlife' %>
+  <%= "Go to #{@arecommendation.name}" %>
+  <% elsif @recommendation.activity_id.name == 'Live Entertainment' %>
+      <%= "Go check out whats playing at #{@arecommendation.name}" %>
+      <% else @recommendation.activity_id.name == 'Adventure' %>
+        <%= "Explore the #{@recommendation.name}" %>
+      <% end  %>
