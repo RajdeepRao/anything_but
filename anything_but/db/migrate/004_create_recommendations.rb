@@ -3,8 +3,6 @@ class CreateRecommendations < ActiveRecord::Migration[5.0]
     create_table :recommendations do |t|
       t.string :name
       t.integer :neighborhood_id
-      t.integer :activity_id
-
       t.timestamps
     end
   end

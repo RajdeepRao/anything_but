@@ -10,12 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907180812) do
+ActiveRecord::Schema.define(version: 6) do
 
   create_table "activities", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "activity_recommendations", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "recommendation_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
   create_table "cities", force: :cascade do |t|
@@ -34,7 +41,6 @@ ActiveRecord::Schema.define(version: 20160907180812) do
   create_table "recommendations", force: :cascade do |t|
     t.string   "name"
     t.integer  "neighborhood_id"
-    t.integer  "activity_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
