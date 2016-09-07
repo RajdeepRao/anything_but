@@ -1,11 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+# #   Character.create(name: 'Luke', movie: movies.first)
 #
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 nyc=City.create(name: "New York City")
 dc=City.create(name: "Washington, D.C.")
 london=City.create(name: "London")
@@ -32,7 +32,7 @@ nottinghill=Neighborhood.create(name: "Notting Hill")
 
 london.neighborhoods<<islington
 london.neighborhoods<<garden
-london.neighborhoods<<notingham
+london.neighborhoods<<nottinghill
 
 nightlife=Activity.create(name: "Nightlife")
 entertainment=Activity.create(name:"Live Entertainment")
@@ -51,16 +51,16 @@ williamsburg.recommendations<<sawdust
 
 brooklynbowl.activities<<adventure
 williamsburg.recommendations<<brooklynbowl
-
+#
 ##LES RECOMMENDATIONS
 dropoff=Recommendation.create(name: "Drop Off Service")
 guesthouse=Recommendation.create(name: "Elvis Guesthouse")
 lowline=Recommendation.create(name: "The Lowline")
 
-dropoff.activites<<nightlife
+dropoff.activities<<nightlife
 les.recommendations<<dropoff
 
-guesthouse.activites<<entertainment
+guesthouse.activities<<entertainment
 les.recommendations<<guesthouse
 
 lowline.activities<<adventure
@@ -75,38 +75,38 @@ wsp=Recommendation.create(name: "Washington Square Park")
 tiger.activities<<nightlife
 village.recommendations<<tiger
 
-bitterend.activites<<entertainment
+bitterend.activities<<entertainment
 village.recommendations<<bitterend
 
-wsp.activites<<adventure
+wsp.activities<<adventure
 village.recommendations<<wsp
 
 ##GEORGE TOWN RECOMMENDATIONS
 piano=Recommendation.create(name: "Piano Bar")
-gypsy=Recommendation.create(name: "Gypsy Sally's")
+gypsy=Recommendation.create(name: "Gypsy Sally\'s")
 oaks=Recommendation.create(name: "Dumbarton Oaks Gardens")
 
-piano.activites<<nightlife
+piano.activities<<nightlife
 georgetown.recommendations<<piano
 
-gypsy.activites<<entertainment
-georgetown.recommendations<<entertainment
+gypsy.activities<<entertainment
+georgetown.recommendations<<gypsy
 
 oaks.activities<<adventure
 georgetown.recommendations<<oaks
 
 ##DUPONT RECOMMENDATIONS
-arnolds=Recommendation.create(name: "St. Arnold's")
-18thstreet=Recommendation.create(name: "Eighteenth Street Lounge")
+arnolds=Recommendation.create(name: "St. Arnold\'s")
+eighteenthstreet=Recommendation.create(name: "Eighteenth Street Lounge")
 scientology=Recommendation.create(name: "The L. Ron Hubbard House")
 
 arnolds.activities<<nightlife
 dupont.recommendations<<arnolds
 
-18thstreet.activites<<entertainment
-dupont.recommendations<<18thstreet
+eighteenthstreet.activities<<entertainment
+dupont.recommendations<<eighteenthstreet
 
-scientology.activites<<adventure
+scientology.activities<<adventure
 dupont.recommendations<<scientology
 
 ##PETWORTH RECOMMENDATIONS
@@ -114,13 +114,13 @@ derby=Recommendation.create(name: "Red Derby")
 bloom=Recommendation.create(name: "BloomBars")
 zoo=Recommendation.create(name: "National Zoological Park")
 
-derby.activites<<nightlife
+derby.activities<<nightlife
 pet.recommendations<<derby
 
 bloom.activities<<entertainment
 pet.recommendations<<bloom
 
-zoo.activites<<adventure
+zoo.activities<<adventure
 pet.recommendations<<zoo
 
 ##ISLINGTON RECOMMENDATIONS
