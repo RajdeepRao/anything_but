@@ -1,3 +1,5 @@
+require 'yelp'
+
 class Adapter <ApplicationRecord
 # require 'rest-client' don't we need this gem for api requests? or does
 #yelp api gem take care of it?
