@@ -1,0 +1,7 @@
+<%= form_for :city do |f|%>
+  <%= f.label "Select Your City: "  %>
+  <br>
+  <%= f.collection_select :city_id, City.all, :id, :name %>
+  <br>
+  <%= f.submit "City Submit"%>
+<% end %>
