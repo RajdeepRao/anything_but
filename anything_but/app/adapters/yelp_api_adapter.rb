@@ -9,6 +9,7 @@ class Adapter < ApplicationRecord
                               token_secret: "m-QKLTpR9QopbhUQRU_6R2sorFA"
                             })
 
+
   def initiate_api_req
     #makes the api request
     the_api_call = client.search("#{@city}", {neighborhood: @neighborhood, activity: @activity })
