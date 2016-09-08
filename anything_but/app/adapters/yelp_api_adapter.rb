@@ -4,7 +4,7 @@ class Adapter <ApplicationRecord
 
   def initiate_api_req
     #makes the api request
-    the_api_call = Yelp.client.search("#{@city}", {neighborhood: @neighborhood, acitvity: @activity })
+    the_api_call = Yelp.client.search("#{@city}", {neighborhood: @neighborhood, activity: @activity })
     api_call_string = JSON.parse(the_api_call)
     parsed_request = api_call_string["???"].find { |data| data["???"] == ??? }
     #parses the json string but do we need it to if its already whittled down
