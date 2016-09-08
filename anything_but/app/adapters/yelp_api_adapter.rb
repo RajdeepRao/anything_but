@@ -9,17 +9,23 @@ class Adapter < ApplicationRecord
                               token_secret: "m-QKLTpR9QopbhUQRU_6R2sorFA"
                             })
 
-
-  def initiate_api_req
-    #makes the api request
-    the_api_call = client.search("#{@city}", {neighborhood: @neighborhood, activity: @activity })
-    api_call_string = JSON.parse(the_api_call)
-    parsed_request = api_call_string["???"].find { |data| data["???"] == ??? }
-    #parses the json string but do we need it to if its already whittled down
-    #to city and neighborhood?
-    parsed_request.save_api_objects
-
+  def initiate_api_req (latitude_num, longitude_num)
+    coordinates = {latitude: latitude_num, longitude: longitude_num}
+    params = {term: 'no food'}
+    client.search_by_coordinates(coordinates, params)
   end
+
+
+  # def initiate_api_req
+  #   #makes the api request
+  #   the_api_call = client.search("#{@city}", {neighborhood: @neighborhood, activity: @activity })
+  #   api_call_string = JSON.parse(the_api_call)
+  #   parsed_request = api_call_string["???"].find { |data| data["???"] == ??? }
+  #   #parses the json string but do we need it to if its already whittled down
+  #   #to city and neighborhood?
+  #   parsed_request.save_api_objects
+  #
+  # end
 
   def save_api_objects
     #takaes parsed_request and save each result as an object hash
