@@ -1,20 +1,5 @@
-<h1> Everything, But... </h1>
+<h1> Anything, But... </h1>
 
-<% City.all.each do |city| %>
-  <h2> <%= city.name %></h2>
-  <div class="neighborhood-div">
-    <% city.neighborhoods.each do |neighborhood| %>
-    <h3><%= neighborhood.name %></h3>
-      <div class="recommendation-div">
-        <% neighborhood.recommendations.each do |recommendation| %>
-          <li>
-            <%= recommendation.name %> -
-            <% recommendation.activities.each do |activity| %>
-            <%= activity.name %>
-            <% end %>
-          </li>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
-<% end %>
+<%= render 'cities/cities' %>
+<br>
+<%= render 'neighborhoods/neighborhood' %>
