@@ -1,7 +1,51 @@
+<p id="user-location"></p>
+
 <h1> What do you want to do? </h1>
 <h2> Anything but...</h2>
 <%= render 'activities/do_not_want_activity' %>
-<br>
-<%= render 'cities/cities' %>
-<br>
-<%= render 'neighborhoods/neighborhood' %>
+
+<script type="text/javascript">
+  var userLocation=$("#user-location")[0];
+  var lat = null;
+  var lon = null;
+  var mapsBaseUrl= "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
+  var googleKey="AIzaSyCkMOrZ-eEtg1ORvYhFkM4HyxrV_yGNQ-A"
+
+  function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        userLocation.innerHTML = "Geolocation is not supported by this browser.";
+    }
+  }
+
+  function showPosition(position) {
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
+    returned_data=null;
+    $.ajax({
+      url: mapsBaseUrl+lat+","+lon+"&key="+googleKey,
+      method: 'GET',
+      success: function (locationData, status){
+        var neighborhood=null;
+        var city=null;
+
+        for (i = 0; i < locationData.results.length; i++) {
+          for (z=0; z < locationData.results[i].types.length; z++){
+            if (locationData.results[i].types[z] === "neighborhood"){
+              var locationDataResults=locationData.results[i]["formatted_address"];
+              userLocation.innerHTML=locationDataResults.split(/,/)[1]+" > "+locationDataResults.split(/,/)[0];
+              return;
+            }
+          }
+        }
+
+        // userLocation.innerHTML=locationData["results"][0]["address_components"][4]["long_name"]+" > "+locationData["results"][0]["address_components"][2]["long_name"];
+      }
+    })
+  }
+
+  $(document).ready(function(){
+    getLocation();
+  });
+</script>
