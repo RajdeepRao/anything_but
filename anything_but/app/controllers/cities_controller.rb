@@ -1,12 +1,12 @@
 class CitiesController < ApplicationController
 
   def index
-    @city = City.all
+    @cities = City.all
   end
 
   def show
-    @city = City.find_by(id: params[:id])
-    @neighborhoods = Neighborhoods.all  # do we actually need this?
+    @city = City.find(params[:id])
+    @neighborhoods = Neighborhoods.all
   end
 
 
