@@ -26,19 +26,18 @@ class Adapter
     end
 
     def filter_api(recommendation_array, doNotWant)
+      binding.pry
       filter_array = []
       recommendation_array.each do |search|
         search.each do |business|
-        filter_array << business
-        unless
-          business.categories.any? do |cat_array|
-            cat_array.each do |tag|
-              tag.include?(doNotWant)
-            end
+          business.categories.each do |category_array|
+            if !category_array.include?(doNotWant)
+              filter_array << business
             end
           end
         end
-      end 
+      end
+      binding.pry
         filter_array
       end
 
