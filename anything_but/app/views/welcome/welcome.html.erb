@@ -5,6 +5,9 @@
 <%= render 'activities/do_not_want_activity' %>
 
 <script type="text/javascript">
+
+// I promise that I'll move this into a nice javascript file soon but for right now it's just easier for me to see it on the same page as the actual code.
+
   var userLocation=$("#user-location")[0];
   var lat = null;
   var lon = null;
@@ -44,5 +47,17 @@
   }
 
   getLocation();
+
+  $("#dnw-button").click(function(){
+    $.ajax({
+      url: "/recommendations",
+      method: "POST",
+      data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
+      success: function(apiData, status){
+        // Unclear if we actually need anything to happen on success since we're going to be working with the dumb yelp API ruby objects, so this javascript portion is kind of over. I may write some kind of logic so that on submission or on the making of the request something happens but that seems unnecessary.
+        alert("This will be a cool thing you should try instead of a pop-up.")
+      }
+    })
+  })
 
 </script>
