@@ -1,9 +1,3 @@
+<h3> You should go to </h3>
 
-<h3>Why Don't you go:</h3>
-<% if @recommendation.activity.name == 'Nightlife' %>
-  <%= "Go to #{@recommendation.name}" %>
-  <% elsif @recommendation.activity.name == 'Live Entertainment' %>
-      <%= "Go check out whats playing at #{@recommendation.name}" %>
-      <% elsif @recommendation.activity.name == 'Adventure' %>
-        <%= "Explore the #{@recommendation.name}" %>
-      <% end  %>
+<h1><a href="<%= @recommendation.url%>" style="text-decoration: none;"><%= @recommendation.name %></a></h1>
