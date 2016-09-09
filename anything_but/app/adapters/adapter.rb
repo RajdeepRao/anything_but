@@ -2,7 +2,7 @@ require 'yelp'
 class Adapter
 
   class YelpWrapper
-    attr_reader :client
+    attr_reader :client, :categories
 
     def initialize
       @client = Yelp::Client.new({ consumer_key: "hCTaBcVlgZ17kGVkIkjxKg",
@@ -20,20 +20,32 @@ class Adapter
       coordinates = {latitude: latitude_num, longitude: longitude_num}
       categories.each do |category|
         params = {category_filter: category}
-        yelp_query_array << self.client.search_by_coordinates(coordinates, params)
+        yelp_query_array << self.client.search_by_coordinates(coordinates, params).businesses
       end
       yelp_query_array
     end
 
-    def filter_api
-      #filters the recommendations array based on the 'dislikes' of the user
-    end
+    def filter_api(recommendation_array, doNotWant)
+      filter_array = []
+      recommendation_array.each do |search|
+        search.each do |business|
+        filter_array << business
+        unless
+          business.categories.any? do |cat_array|
+            cat_array.each do |tag|
+              tag.include?(doNotWant)
+            end
+            end
+          end
+        end
+      end 
+        filter_array
+      end
 
-    def machete
-      #if we need to hack away things like food, gym, and medical things
-      #from the api request
-    end
+
+
+
+      #filters the recommendations array based on the 'dislikes' of th
+
   end
-
-
 end
