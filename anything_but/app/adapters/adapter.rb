@@ -26,7 +26,6 @@ class Adapter
     end
 
     def filter_api(recommendation_array, doNotWant)
-      binding.pry
       filter_array = []
       recommendation_array.each do |search|
         search.each do |business|
@@ -37,7 +36,6 @@ class Adapter
           end
         end
       end
-      binding.pry
         filter_array
       end
 

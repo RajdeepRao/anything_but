@@ -1,8 +1,11 @@
 <p id="user-location"></p>
 
-<h1> What do you want to do? </h1>
-<h2> Anything but...</h2>
-<%= render 'activities/do_not_want_activity' %>
+<div id="welcome-questions">
+  <h1> I would do anything but... </h1>
+  <%= render 'activities/do_not_want_activity' %>
+</div>
+
+<div id="rec-response-div"><h1 id="rec-response-h1"></h1></div>
 
 <script type="text/javascript">
 
@@ -52,10 +55,10 @@
     $.ajax({
       url: "/recommendations",
       method: "POST",
+      dataType: "json",
       data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
       success: function(apiData, status){
-        // Unclear if we actually need anything to happen on success since we're going to be working with the dumb yelp API ruby objects, so this javascript portion is kind of over. I may write some kind of logic so that on submission or on the making of the request something happens but that seems unnecessary.
-        alert("This will be a cool thing you should try instead of a pop-up.")
+        $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
       }
     })
   })
