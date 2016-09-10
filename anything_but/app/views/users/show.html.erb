@@ -1,8 +1,9 @@
 User Profile page
 
-<%= @user.username %>
-<%= @user.email %>
+<%= @user.username %><br>
+<%= @user.email %><br><br>
 
 
-
-<%= link_to 'Edit', edit_user_path(@user) %>
+<%= link_to "Log Out", signout_path %><br>
+<%= link_to 'Edit Your Account', edit_user_path(@user) %><br>
+<%= link_to 'Delete Your Account', user_path(@user), method: "delete" %>
