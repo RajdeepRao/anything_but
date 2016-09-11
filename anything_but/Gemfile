@@ -30,10 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'yelp', require: 'yelp'
 
 gem 'jquery-ui-rails'
-<<<<<<< HEAD
 
-=======
->>>>>>> 406e87a1a66eb75964da7871917cc3f1f24248e2
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
