@@ -9,7 +9,7 @@ class RecommendationsController < ApplicationController
     #takes the massive array of recommendation objects from the API and
     #creates new Recommendation instances to populate our DB with each rec
     filtered.each do |one_rec|
-      recommendation = Recommendation.create(name:one_rec.name, url: one_rec.url)
+      Recommendation.create(name:one_rec.name, url: one_rec.url)
     end
 
     #can we combine this into lines 11-13? and/or somehow have this happen
@@ -33,6 +33,12 @@ class RecommendationsController < ApplicationController
 
 
   def show
+    @recommendation=Recommendation.all.sample
+    respond_to do |f|
+      f.json {
+        render json: {name:@recommendation.name, url:@recommendation.url}
+      }
+    end
   end
 
 
