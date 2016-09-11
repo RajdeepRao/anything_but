@@ -68,4 +68,15 @@
     })
   })
 
+  $("#dislike-button").click(function(){
+    $.ajax({
+      url: "/new-recommendation",
+      method: "GET",
+      dataType: "json",
+      success: function(newRecommendation, status){
+        $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+newRecommendation.url+"'>"+newRecommendation.name+"</a>";
+      }
+    })
+  })
+
 </script>
