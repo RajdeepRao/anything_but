@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   get '/new-recommendation', to: 'recommendations#show'
 
+  get '/activities', to: 'activities#index', as: 'activities'
+
 end
