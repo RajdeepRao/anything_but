@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
 
+
   get '/new-recommendation', to: 'recommendations#show'
 
   get '/activities', to: 'activities#index', as: 'activities'
