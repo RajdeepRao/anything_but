@@ -11,6 +11,10 @@
 
 <div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
 
+<div id="new-search-button" style="display: none;">
+  <button style="button">New Search!</button>
+</div>
+
 <script type="text/javascript">
 
 // I promise that I'll move this into a nice javascript file soon but for right now it's just easier for me to see it on the same page as the actual code.
@@ -62,10 +66,32 @@
       dataType: "json",
       data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
       success: function(apiData, status){
+        $("#rec-response-h1")[0].style="display:block;"
         $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
         $("#dislike-button")[0].style="display:block;";
+        $("#new-search-button")[0].style="display:block;";
+        $("#welcome-questions")[0].style="display:none;";
       }
     })
+  })
+
+  $("#dislike-button").click(function(){
+    $.ajax({
+      url: "/new-recommendation",
+      method: "GET",
+      dataType: "json",
+      success: function(newRecommendation, status){
+        $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+newRecommendation.url+"'>"+newRecommendation.name+"</a>";
+      }
+    })
+  })
+
+  $("#new-search-button").click(function(){
+    $("#welcome-questions")[0].style="display: block;";
+    $("#do-not-want")[0].value="";
+    $("#dislike-button")[0].style="display:none;";
+    $("#new-search-button")[0].style="display:none;";
+    $("#rec-response-h1")[0].style="display:none;"
   })
 
 </script>
