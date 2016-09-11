@@ -1,11 +1,5 @@
+<p id="user-location"></p>
 
-
-<h1> What do you want to do? </h1>
-<h2> Anything but...</h2>
-
-
-<%= render 'activities/do_not_want_activity' %>
-=======
 <div id="welcome-questions">
   <h1> I would do anything but... </h1>
   <%= render 'activities/do_not_want_activity' %>
@@ -15,9 +9,8 @@
   <h1 id="rec-response-h1"></h1>
 </div>
 
-<%= render "activities/i_hate_that" %>
+<div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
 
->>>>>>> c81d4e8e57ac8af2959d35e63b2ef46498e3ff55
 <script type="text/javascript">
 
 // I promise that I'll move this into a nice javascript file soon but for right now it's just easier for me to see it on the same page as the actual code.
@@ -45,7 +38,7 @@
       method: 'GET',
       success: function (locationData, status){
         var neighborhood=null;
-        var city=null;
+        var city=null
 
         for (i = 0; i < locationData.results.length; i++) {
           for (z=0; z < locationData.results[i].types.length; z++){
@@ -55,7 +48,7 @@
               return;
             }
           }
-        }
+        };
       }
     })
   }
@@ -70,26 +63,9 @@
       data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
       success: function(apiData, status){
         $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
+        $("#dislike-button")[0].style="display:block;";
       }
     })
   })
-
-
-  // I'm started writing this but then realized we probably don't need it
-  //Also pretty sure a few lines are wrong.
-
-        // getnewRec();
-        // $("#newRec").click(function(){
-        //   $.ajax({
-        //     url: "/recommendations",
-        //     method: "POST",
-        //     dataType: "json",
-        //     data: {@recommendation:$("#newRec").val()},
-        //     success: function(apiData, status){
-        //       $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
-        //     }
-        //   })
-        // })
-
 
 </script>
