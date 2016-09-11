@@ -64,6 +64,7 @@
       success: function(apiData, status){
         $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
         $("#dislike-button")[0].style="display:block;";
+        $("#welcome-questions")[0].style="display:none;";
       }
     })
   })
