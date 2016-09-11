@@ -1,19 +1,34 @@
 <p id="user-location"></p>
 
-<div id="welcome-questions">
-  <h1> I would do anything but... </h1>
-  <%= render 'activities/do_not_want_activity' %>
+
+    <div id="welcome-questions">
+      <div id="page-wrapper">
+      <h1> ANYTHING BUT</h1>
+      <br>
+      <h5>Type the name of an activity you dislike</h5>
+    </div>
+      <%= render 'activities/do_not_want_activity' %>
+    </div>
+
+<div id="page-wrapper">
+    <div id="rec-response-div">
+      <h1 id="rec-response-h1"></h1>
+    </div>
 </div>
 
-<div id="rec-response-div">
-  <h1 id="rec-response-h1"></h1>
-</div>
 
-<div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
+          <div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
+          <div id="new-search-button" style="display: none;">
+          </div>
 
-<div id="new-search-button" style="display: none;">
-  <button style="button">New Search!</button>
-</div>
+
+        <div id="result-wrapB">
+            <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
+          </div>
+      </div>
+
+
+
 
 <script type="text/javascript">
 
@@ -75,7 +90,7 @@
     })
   })
 
-  $("#dislike-button").click(function(){
+  $("#result-wrapA").click(function(){
     $.ajax({
       url: "/new-recommendation",
       method: "GET",
@@ -86,7 +101,7 @@
     })
   })
 
-  $("#new-search-button").click(function(){
+  $("#result-wrapB").click(function(){
     $("#welcome-questions")[0].style="display: block;";
     $("#do-not-want")[0].value="";
     $("#dislike-button")[0].style="display:none;";
