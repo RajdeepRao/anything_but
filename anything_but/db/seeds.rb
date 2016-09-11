@@ -165,3 +165,9 @@
 #
 # flower.activities<<adventure
 # nottinghill.recommendations<<flower
+
+activity_names=["Airsoft", "Amateur Sports Teams", "Amusement Parks", "Aquariums", "Archery", "Baseball Fields", "Basketball Courts", "Batting Cages", "Beach Volleyball", "Beaches", "Bicycle Paths", "Boating", "Bowling", "Bungee Jumping", "Carousels", "Challenge Courses", "Climbing", "Disc Golf", "Escape Games", "Experiences", "Fishing", "Flyboarding", "Gliding", "Go Karts", "Golf", "Gun/Rifle Ranges", "Handball", "Hang Gliding", "Hiking", "Horse Racing", "Horseback Riding", "Hot Air Balloons", "Jet Skis", "Kitebaording", "Lakes", "Laser Tag", "Lawn Bowling", "Leisure Centers", "Mini Golf", "Mountain Biking", "Nudist", "Paddleboarding", "Paintball", "Parks", "Public Plazas", "Rafting/Kayaking", "Recreation Centers", "Rock Climbing", "Sailing", "Scavenger Hunts", "Skating Rinks", "Skiing", "Skydiving", "Sledding", "Snorkeling", "Soccer", "Sports Clubs", "Squash", "Surfing", "Swimming Pools", "Tennis", "Trampoline Parks", "Tubing", "Volleyball", "Water Parks", "Wildlife Hunting Ranges", "Ziplining", "Zoos", "Zorbing", "Arcades", "Art Galleries", "Bingo Halls", "Botanical Gardens", "Cabaret", "Casinos", "Castles", "Choirs", "Cinema", "Cultural Center", "Farms", "Festivals", "Haunted Houses", "Jazz & Blues", "LAN Centers", "Mah Jong Halls", "Museums", "Music Venues", "Observatories", "Opera & Ballet", "Paint & Sip", "Performing Arts", "Planetarium", "Race Tracks", "Rodeo", "Street Art", "Studio Taping", "Tablao Flamenco", "Wineries", "Adult Entertainment", "Absinthe Bars", "Beach Bars", "Cocktail Bars", "Tiki Bars", "Whiskey Bars", "Wine Bars", "Beer Gardens", "Comedy Clubs", "Country Dance Halls", "Dance Clubs", "Karaoke", "Pool Halls"]
+
+activity_names.each do |activity|
+  Activity.create(name:activity)
+end
