@@ -2,7 +2,15 @@ class RecommendationsController < ApplicationController
 
   def create
     yelp = Adapter::YelpWrapper.new
-    recommendation_array = yelp.initiate_api_req(params["latitude"], params["longitude"], yelp.categories)
+    previous_search = false
+
+    Recommendation.delete_all
+
+    if previous_search == false
+      recommendation_array = yelp.initiate_api_req(params["latitude"], params["longitude"], yelp.categories)
+      previous_search==true
+    end
+
     filtered = yelp.filter_api(recommendation_array, params['doNotWant']) #the filtered array of rec objects
 
 
@@ -20,15 +28,13 @@ class RecommendationsController < ApplicationController
     end
 
     #we could theoretically make line 16 through 21 wrapped inside a SQL method?
+    # binding.pry
     @recommendation=Recommendation.all.sample
         respond_to do |f|
           f.json {
             render json: {name:@recommendation.name, url:@recommendation.url}
           }
-          # render: 'activities/i_hate_that'
         end
-
-
   end
 
 
