@@ -90,7 +90,7 @@
     })
   })
 
-  $("#dislike-button").click(function(){
+  $("#result-wrapA").click(function(){
     $.ajax({
       url: "/new-recommendation",
       method: "GET",
@@ -101,7 +101,7 @@
     })
   })
 
-  $("#new-search-button").click(function(){
+  $("#result-wrapB").click(function(){
     $("#welcome-questions")[0].style="display: block;";
     $("#do-not-want")[0].value="";
     $("#dislike-button")[0].style="display:none;";
