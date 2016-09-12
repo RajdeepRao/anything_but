@@ -101,6 +101,10 @@ p{
    text-transform: uppercase;
  }
 
+ .breadcrumb li {
+   z-index: 100;
+ }
+
 
 #like_button{
   width: 800px;
@@ -117,4 +121,9 @@ p{
   top: -11px;
   font-size: 1.1em;
 
+}
+
+#loading {
+  top: -70px;
+  text-align: center;
 }
