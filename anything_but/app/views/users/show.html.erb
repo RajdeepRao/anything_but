@@ -1,9 +1,11 @@
-<h3>Hello, <h2>
+<h2>Hello,<h2>
 <h1><%= @user.username %></h1>
 
-<% @user.recommendations.each do |rec| %>
-  <h2><%= link_to rec.name, rec.url, :target => "_blank" %></h2>
-<% end %>
-<br>
-<br>
-<%= link_to 'Delete Account', user_path(current_user), method: "delete" %>
+<body>
+  <% @user.recommendations.each do |rec| %>
+    <p><%= link_to rec.name, rec.url, :target => "_blank" %></p>
+  <% end %>
+  <br>
+  <br>
+  <%= link_to 'Delete Account', user_path(current_user), method: "delete" %>
+</body>
