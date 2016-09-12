@@ -5,10 +5,10 @@ class Adapter
     attr_reader :client, :categories
 
     def initialize
-      @client = Yelp::Client.new({ consumer_key: "hCTaBcVlgZ17kGVkIkjxKg",
-                                consumer_secret: "sIjr5P755ai8DaEE-2oEtRWSpm8",
-                                token: "qCUzEyLgA_XmZl0wxSVvRkjXBfFRgisr",
-                                token_secret: "m-QKLTpR9QopbhUQRU_6R2sorFA"
+      @client = Yelp::Client.new({ consumer_key: ENV["YELP_CONSUMER_KEY"],
+                                consumer_secret: ENV["YELP_CONSUMER_SECRET"],
+                                token: ENV["YELP_TOKEN"],
+                                token_secret: ENV["YELP_TOKEN_SECRET"]
                               })
       @categories = ['active', 'arts', 'nightlife']
     end
