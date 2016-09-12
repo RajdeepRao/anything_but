@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/signup', to: 'users#new'
   post '/users', to: 'users#create'
 
+  get '/dashboard', to: 'users#show'
+
 
   get '/new-recommendation', to: 'recommendations#show'
 
