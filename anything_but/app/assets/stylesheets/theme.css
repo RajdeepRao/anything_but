@@ -93,9 +93,19 @@ p{
   margin-right: -50%;
   transform: translate(-50%, -50%)
 }
+
 .breadcrumb {
   font-family: Helvetica,Arial,sans-serif;
    font-size: 1.1em;
    font-weight: 800;
 
  }
+
+#like_button{
+  width: 800px;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}

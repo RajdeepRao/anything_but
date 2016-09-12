@@ -171,3 +171,16 @@ activity_names=["Airsoft", "Amateur Sports Teams", "Amusement Parks", "Aquariums
 activity_names.each do |activity|
   Activity.create(name:activity)
 end
+
+User.create(username:"Harambe", password: "password")
+User.create(username:"The_Grand_Negis", password:"password")
+User.create(username:"Barry_Allen", password:"password")
+User.create(username:"Toby_McGuire", password: "password")
+
+Recommendation.create(name: "Cool Bar", url: "https://www.thrillist.com/drink/new-york/50-nyc-bars-you-need-to-drink-in-before-you-die")
+Recommendation.create(name: "Great Park", url: "http://www.cityofirvine.org/orange-county-great-park")
+Recommendation.create(name: "Enriching Museum", url: "http://www.si.edu/seec")
+
+User.all.each do |user|
+  user.recommendations<<Recommendation.all.sample
+end
