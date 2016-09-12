@@ -25,19 +25,15 @@ class Adapter
       yelp_query_array
     end
 
-    def filter_api(recommendation_array, doNotWant)
+    def filter_api(recommendations, doNotWant)
       filter_array = []
-      recommendation_array.each do |search|
-        search.each do |business|
-          business.categories.each do |category_array|
-            if !category_array.include?(doNotWant)
-              filter_array << business
-            end
-          end
+      recommendations.each do |business|
+        unless business.activities.any?{|activity| activity.name==doNotWant}
+          filter_array<<business
         end
       end
         filter_array
-      end
+    end
 
 
 
