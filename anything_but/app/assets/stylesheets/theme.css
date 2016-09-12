@@ -101,10 +101,32 @@ p{
    text-transform: uppercase;
  }
 
+<<<<<<< HEAD
+ .breadcrumb li {
+   z-index: 100;
+ }
+
+
+#like_button{
+  width: 800px;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
+}
+
+=======
+>>>>>>> master
 #user-location {
   position: absolute;
   right: 13px;
   top: -11px;
   font-size: 1.1em;
 
+}
+
+#loading {
+  top: -70px;
+  text-align: center;
 }
