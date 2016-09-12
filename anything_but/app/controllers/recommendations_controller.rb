@@ -47,6 +47,10 @@ class RecommendationsController < ApplicationController
     end
   end
 
+  def add_user_liked_activity
+    current_user.recommendations << Recommendation.find_by_name(params[:like_business_name])
+  end
+
 
 
 

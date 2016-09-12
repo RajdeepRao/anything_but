@@ -19,4 +19,6 @@ Rails.application.routes.draw do
 
   get '/activities', to: 'activities#index', as: 'activities'
 
+  post "/user-liked-recommendation", to: 'recommendations#add_user_liked_activity'
+
 end

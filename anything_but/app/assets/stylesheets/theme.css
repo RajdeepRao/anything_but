@@ -101,16 +101,6 @@ p{
    text-transform: uppercase;
  }
 
-
-#like_button{
-  width: 800px;
-  position: absolute;
-  top: 85%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%)
-}
-
 #user-location {
   position: absolute;
   right: 13px;
