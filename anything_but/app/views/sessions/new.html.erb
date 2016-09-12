@@ -1,9 +1,11 @@
-<h1> Signin Page </h1>
+<h1> Sign In </h1>
 
-<%= form_tag '/signin' do %>
+<p><%= form_tag '/signin' do %></p>
 
-  Username: <%= text_field_tag :username %>
-  Password: <%= password_field_tag :password %>
-  <%= submit_tag "Submit" %>
+  <p> Username:</p> <%= text_field_tag :username %>
+  <p> Password:</p> <%= password_field_tag :password %>
+  <br>
+  <br>
+  <p><%= submit_tag " Submit " %></p>
 
 <% end %>
