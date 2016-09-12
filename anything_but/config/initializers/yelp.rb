@@ -1,7 +1,6 @@
-require 'yelp'
-
-client = Yelp::Client.new({ consumer_key: "hCTaBcVlgZ17kGVkIkjxKg",
-                            consumer_secret: "sIjr5P755ai8DaEE-2oEtRWSpm8",
-                            token: "qCUzEyLgA_XmZl0wxSVvRkjXBfFRgisr",
-                            token_secret: "m-QKLTpR9QopbhUQRU_6R2sorFA"
-                          })
+# require 'yelp'
+#
+# Yelp.consumer_key = ENV["yelp_consumer_key"]
+# Yelp.consumer_secret = ENV["yelp_consumer_secret"]
+# Yelp.token = ENV["yelp_token"]
+# Yelp.token_secret = ENV["yelp_token_secret"]

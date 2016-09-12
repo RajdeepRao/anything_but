@@ -3,6 +3,10 @@ User Profile page
 <%= @user.username %><br>
 <%= @user.email %><br><br>
 
+<%= @user.recommendations.each do |rec| %>
+  <%= link_to rec.name, recommendation_path %>
+<%= end %>
+
 
 <%= link_to "Log Out", signout_path %><br>
 <%= link_to 'Edit Your Account', edit_user_path(@user) %><br>
