@@ -101,6 +101,7 @@ p{
    text-transform: uppercase;
  }
 
+<<<<<<< HEAD
  .breadcrumb li {
    z-index: 100;
  }
@@ -115,6 +116,8 @@ p{
   transform: translate(-50%, -50%)
 }
 
+=======
+>>>>>>> master
 #user-location {
   position: absolute;
   right: 13px;
