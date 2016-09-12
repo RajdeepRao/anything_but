@@ -1,13 +1,8 @@
-User Profile page
+<h3>Hello, <h2>
+<h1><%= @user.username %></h1>
 
-<%= @user.username %><br>
-<%= @user.email %><br><br>
-
-<%= @user.recommendations.each do |rec| %>
-  <%= link_to rec.name, recommendation_path %>
-<%= end %>
-
-
-<%= link_to "Log Out", signout_path %><br>
-<%= link_to 'Edit Your Account', edit_user_path(@user) %><br>
-<%= link_to 'Delete Your Account', user_path(@user), method: "delete" %>
+<% @user.recommendations.each do |rec| %>
+  <h2><%= link_to rec.name, rec.url, :target => "_blank" %></h2>
+<% end %>
+<br>
+<br>
