@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   end
 
   def show
+
   end
 
   def edit
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to user_path(@user)
+      redirect_to dashboard_path
     else
       render 'edit'
     end
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.delete
-    redirect_to '/'
+    redirect_to '/signout'
   end
 
   private
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    @user=current_user
   end
 
 end
