@@ -98,8 +98,9 @@ p{
   font-family: Helvetica,Arial,sans-serif;
    font-size: 1.1em;
    font-weight: 800;
-
+   text-transform: uppercase;
  }
+
 
 #like_button{
   width: 800px;
@@ -108,4 +109,12 @@ p{
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
+}
+
+#user-location {
+  position: absolute;
+  right: 13px;
+  top: -11px;
+  font-size: 1.1em;
+
 }
