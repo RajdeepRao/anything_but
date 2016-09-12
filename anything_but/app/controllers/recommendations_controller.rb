@@ -7,17 +7,17 @@ class RecommendationsController < ApplicationController
     yelp = Adapter::YelpWrapper.new
 
 
-## BELOW DOES NOTHING ITS ALWAYS GOING TO MAKE A NEW QUERY
     if Recommendation.previous_search == false
-      Recommendation.delete_all
       recommendation_array = yelp.initiate_api_req(params["latitude"], params["longitude"], yelp.categories)
-      Recommendation.previous_search=(true)
+      Recommendation.previous_search = true
       recommendation_array.flatten!.each do |one_rec|
-        rec=Recommendation.new(name:one_rec.name, url:one_rec.url)
-        one_rec.categories.each do |category_array|
-          if Activity.all.any?{|activity| activity.name==category_array[0]}
-            rec.activities<<Activity.find_by(name:category_array[0])
-            rec.save
+        unless Recommendation.find_by(name: one_rec.name)
+          rec=Recommendation.new(name:one_rec.name, url:one_rec.url)
+          one_rec.categories.each do |category_array|
+            if Activity.all.any?{|activity|activity.name==category_array[0]}
+              rec.activities<<Activity.find_by(name:category_array[0])
+              rec.save
+            end
           end
         end
       end
