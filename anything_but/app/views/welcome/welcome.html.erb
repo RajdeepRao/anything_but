@@ -29,7 +29,7 @@
             <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
           </div>
 
-        <div id="#like_button"
+        <div id="like_button"
           <% if logged_in? %>
           <button type="button" class="btn btn-default btn-lg">
             <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
@@ -112,6 +112,11 @@
       dataType: "json",
       success: function(newRecommendation, status){
         $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+newRecommendation.url+"'>"+newRecommendation.name+"</a>";
+        var selector = $("#like_button").find('span');
+        if (selector.hasClass('glyphicon-heart'))
+          selector.removeClass('glyphicon-heart')
+          selector.addClass("glyphicon-heart-empty")
+
       }
     })
   })
@@ -122,6 +127,19 @@
     $("#dislike-button")[0].style="display:none;";
     $("#new-search-button")[0].style="display:none;";
     $("#rec-response-h1")[0].style="display:none;"
+  })
+
+  $("#like_button").click(function(){
+    $.ajax({
+      url: "/user-liked-recommendation",
+      method: "POST",
+      dataType: "json",
+      data: {like_business_name:$('a').last().html(), like_business_link:$('a').last().attr('href')},
+      success: function(returnData, status){
+        $("#like_button").find('span').toggleClass('glyphicon-heart-empty glyphicon-heart');
+
+      }
+    })
   })
 
 </script>
