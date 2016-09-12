@@ -98,5 +98,13 @@ p{
   font-family: Helvetica,Arial,sans-serif;
    font-size: 1.1em;
    font-weight: 800;
-
+   text-transform: uppercase;
  }
+
+#user-location {
+  position: absolute;
+  right: 13px;
+  top: -11px;
+  font-size: 1.1em;
+
+}
