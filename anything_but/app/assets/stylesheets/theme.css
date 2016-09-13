@@ -128,3 +128,20 @@ span.glyphicon {
     vertical-align: middle;
     margin-top: -6px;
 }
+#heart{
+
+}
+#signup{
+  position: absolute;
+  top: 70%;
+  left: 25%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+#signin{
+  position: absolute;
+  top: 55%;
+  left: 20%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}

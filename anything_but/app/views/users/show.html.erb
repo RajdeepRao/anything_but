@@ -1,10 +1,14 @@
-<h2>Hello,<h2>
-<h1><%= @user.username %></h1>
-
+<h2>Hello, <%= @user.username %></h1>
+<br>
 <body>
-  <% @user.recommendations.each do |rec| %>
-    <p><%= link_to rec.name, rec.url, :target => "_blank" %></p>
-  <% end %>
+
+  <ul>
+      <p><u>Place you didn't hate</u>:</p>
+    <% @user.recommendations.each do |rec| %>
+      <li><p><%= link_to rec.name, rec.url, :target => "_blank" %></p></li>
+    <% end %>
+  </ul>
+
   <br>
   <br>
   <%= link_to 'Delete Account', user_path(current_user), method: "delete" %>
