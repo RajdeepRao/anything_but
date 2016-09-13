@@ -3,13 +3,12 @@
 <body>
 
   <ul style="list-style: none;">
-      <p><u>Places you didn't hate</u>:</p>
     <% @user.recommendations.each do |rec| %>
       <li class="liked_place"><p> <span class="glyphicon glyphicon-heart"></span>  <%= link_to rec.name, rec.url, :target => "_blank" %></span></p></li>
     <% end %>
   </ul>
 
   <br>
-  <br> id=rec.name
+  <br>
   <%= link_to 'Delete Account', user_path(current_user), method: "delete" %>
 </body>
