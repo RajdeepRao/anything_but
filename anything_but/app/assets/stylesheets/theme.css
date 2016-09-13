@@ -29,8 +29,7 @@
    transform: translate(-50%, -50%);
  }
  /*#response-wrapper{
-   font-size: 650%;
-   width: 800px;
+
    position: absolute;
    text-align: center;
    font-weight: 800;
@@ -80,7 +79,7 @@ p{
 #result-wrapA{
   width: 800px;
   position: absolute;
-  top: 85%;
+  top: 78%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -88,7 +87,7 @@ p{
 #result-wrapB{
   width: 800px;
   position: absolute;
-  top: 95%;
+  top: 90%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%)
@@ -106,8 +105,11 @@ p{
  }
 
 
-/*#like_button{
-}*/
+#like_button{
+  position: absolute;
+  float: left;
+  top: 8%;
+}
 
 
 #user-location {
