@@ -28,18 +28,12 @@
    margin-right: -50%;
    transform: translate(-50%, -50%);
  }
- /*#response-wrapper{
-
-   position: absolute;
+ #response-wrapper{
    text-align: center;
-   font-weight: 800;
-   color: black;
-   top: 40%;
    bottom: 40%;
    word-wrap: break-word;
-   margin-right: -50%;
-   transform: translate(-50%, -50%);
- }*/
+   overflow: auto;
+ }
 h1{
   width: 800px;
   text-align: center;
@@ -48,6 +42,8 @@ h1{
   color: black;
   top: 75%;
   word-wrap: break-word;
+  overflow: auto;
+
 }
 h2{
   width: 800px;
@@ -58,6 +54,7 @@ h2{
   top: 50%;
   bottom: 50%;
   word-wrap: break-word;
+  overflow: auto;
 }
 
 h5{
