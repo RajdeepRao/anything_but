@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
 //= require bootstrap-sprockets
@@ -21,11 +20,11 @@
 
 $( document ).ready(function() {
     $("#input-box").hide();
-    // 
+    //
     // $("#home-link").click(function(){
     //   $("#input-box").hide();
     // })
-})
+});
 
 
   // // hide spinner
