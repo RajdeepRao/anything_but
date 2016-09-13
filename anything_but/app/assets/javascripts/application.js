@@ -20,19 +20,25 @@
 
 
 $( document ).ready(function() {
+    $("#input-box").hide();
+    // 
+    // $("#home-link").click(function(){
+    //   $("#input-box").hide();
+    // })
+})
+
 
   // // hide spinner
-  // $(".spinner").hide();
 
 
   // show spinner on AJAX start
-  $(document).ajaxStart(function(){
-    $(".spinner").show();
-  });
-
-  // hide spinner on AJAX stop
-  $(document).ajaxStop(function(){
-    $(".spinner").hide();
-  });
-
-});
+  // $(document).ajaxStart(function(){
+  //   $(".spinner").show();
+  //   // $("#input-box").hide();
+  // });
+  //
+  // // hide spinner on AJAX stop
+  // $(document).ajaxStop(function(){
+  //   $(".spinner").hide();
+  //   $("#input-box").show();
+  // });
