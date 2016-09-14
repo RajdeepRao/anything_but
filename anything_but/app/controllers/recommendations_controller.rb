@@ -47,6 +47,7 @@ class RecommendationsController < ApplicationController
     end
   end
 
+
   def add_user_liked_activity
     rec = Recommendation.find_by(url:params[:like_business_link])
     unless current_user.recommendations.any?{|recommendation| recommendation.url == rec.url}

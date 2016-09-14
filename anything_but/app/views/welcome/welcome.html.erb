@@ -2,58 +2,50 @@
 <p id="user-location"></p>
 </div>
 
-<div id="welcome-questions">
-  <div id="page-wrapper">
-    <h1> ANYTHING BUT</h1>
-    <br>
-    <h5>Type the name of a location you don't want to go to, then choose the closest match.</h5>
-  </div>
-  <div id="input-box" style="display: none;">
-    <%= render 'activities/do_not_want_activity' %>
-  </div>
-</div>
-
-<div id="page-wrapper">
-  <div id="rec-response-div">
-    <div id="response-wrapper">
-    <h2 id="rec-response-h1"><h2>
+    <div id="welcome-questions">
+        <div id="page-wrapper">
+          <h1> ANYTHING BUT</h1>
+          <br>
+          <h5>Type the name of an activity you dislike</h5>
+        </div>
+      <%= render 'activities/do_not_want_activity' %>
     </div>
-  </div>
-</div>
 
-<div class="col-md-4 col-md-offset-4" id="loading">
-  <div class="spinner">
-    <div class="sk-folding-cube">
-      <div class="sk-cube1 sk-cube"></div>
-      <div class="sk-cube2 sk-cube"></div>
-      <div class="sk-cube4 sk-cube"></div>
-      <div class="sk-cube3 sk-cube"></div>
-    </div>
-    <span style="right: -5px;">Loading</span>
-  </div>
-</div>
+      <div id="page-wrapper">
+          <div id="rec-response-div">
+            <div id="response-wrapper">
+            <h2 id="rec-response-h1"><h2>
+            </div>
+          </div>
+      </div>
 
 
-<div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
-  <div id="new-search-button" style="display: none;">
-</div>
+        <div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
+          <div id="new-search-button" style="display: none;">
+        </div>
 
 
-<div id="result-wrapB">
-  <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
-</div>
+        <div id="result-wrapB">
+            <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
+          </div>
 
-<div id="like_button">
-  <% if logged_in? %>
-  <button type="button" class="btn btn-default btn-lg" align="center">
-    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-  </button>
-  <% end %>
-</div>
+        <div id="#like_button"
+          <% if logged_in? %>
+          <button type="button" class="btn btn-default btn-lg">
+            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+          </button>
+          <% end %>
+        </div>
+
+
+      </div>
+
+
 
 
 <script type="text/javascript">
 
+// I promise that I'll move this into a nice javascript file soon but for right now it's just easier for me to see it on the same page as the actual code.
 
   var userLocation=$("#user-location")[0];
   var lat = null;
@@ -62,8 +54,6 @@
   var googleKey="AIzaSyAhdYCfKZwTBbDA5PxY_bj_bXtEKF2xLAc"
 
   function getLocation() {
-      $(".spinner").show();
-
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
     } else {
@@ -79,8 +69,6 @@
       url: mapsBaseUrl+lat+","+lon+"&key="+googleKey,
       method: 'GET',
       success: function (locationData, status){
-        $(".spinner").hide();
-        $("#input-box").show();
         var neighborhood=null;
         var city=null
 
@@ -102,15 +90,12 @@
   getLocation();
 
   $("#dnw-button").click(function(){
-    $(".spinner").show();
-    $("#input-box").hide();
     $.ajax({
       url: "/recommendations",
       method: "POST",
       dataType: "json",
       data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
       success: function(apiData, status){
-        $(".spinner").hide();
         $("#rec-response-h1")[0].style="display:block;"
         $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
         $("#dislike-button")[0].style="display:block;";
@@ -127,40 +112,16 @@
       dataType: "json",
       success: function(newRecommendation, status){
         $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+newRecommendation.url+"'>"+newRecommendation.name+"</a>";
-        var selector = $("#like_button").find('span');
-        if (selector.hasClass('glyphicon-heart'))
-          selector.removeClass('glyphicon-heart')
-          selector.addClass("glyphicon-heart-empty")
-
       }
     })
   })
 
   $("#result-wrapB").click(function(){
-    $("#input-box").show();
     $("#welcome-questions")[0].style="display: block;";
     $("#do-not-want")[0].value="";
     $("#dislike-button")[0].style="display:none;";
     $("#new-search-button")[0].style="display:none;";
     $("#rec-response-h1")[0].style="display:none;"
-  })
-
-
-
-
-
-  $("#like_button").click(function(){
-    $.ajax({
-      
-      url: "/user-liked-recommendation",
-      method: "POST",
-      dataType: "json",
-      data: {like_business_name:$('a').last().html(), like_business_link:$('a').last().attr('href')},
-      success: function(returnData, status){
-          $("#like_button").find('span').toggleClass('glyphicon-heart-empty glyphicon-heart');
-
-        }
-    })
   })
 
 </script>
