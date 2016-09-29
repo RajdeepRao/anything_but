@@ -3,6 +3,7 @@ class Recommendation < ApplicationRecord
   has_many :activities, through: :activity_recommendations
   has_many :user_recommendations
   has_many :users, through: :user_recommendations
+  validates :name, presence: true
   # belongs_to :neighborhood
 
   @@filtered_array=[]

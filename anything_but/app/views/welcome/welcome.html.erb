@@ -1,127 +1,44 @@
 <div id="location">
 <p id="user-location"></p>
 </div>
-
-    <div id="welcome-questions">
-        <div id="page-wrapper">
-          <h1> ANYTHING BUT</h1>
-          <br>
-          <h5>Type the name of an activity you dislike</h5>
-        </div>
-      <%= render 'activities/do_not_want_activity' %>
+<div id="welcome-questions">
+  <div id="page-wrapper">
+    <h1> ANYTHING BUT</h1>
+    <br>
+    <h5>Type the name of a location you don't want to go to, then choose the closest match.</h5>
+  </div>
+  <div id="input-box" style="display: none;">
+    <%= render 'activities/do_not_want_activity' %>
+  </div>
+</div>
+<div id="page-wrapper">
+  <div id="rec-response-div">
+    <div id="response-wrapper">
+    <h2 id="rec-response-h1"><h2>
     </div>
-
-      <div id="page-wrapper">
-          <div id="rec-response-div">
-            <div id="response-wrapper">
-            <h2 id="rec-response-h1"><h2>
-            </div>
-          </div>
-      </div>
-
-
-        <div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
-          <div id="new-search-button" style="display: none;">
-        </div>
-
-
-        <div id="result-wrapB">
-            <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
-          </div>
-
-        <div id="#like_button"
-          <% if logged_in? %>
-          <button type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
-          </button>
-          <% end %>
-        </div>
-
-
-      </div>
-
-
-
-
-<script type="text/javascript">
-
-// I promise that I'll move this into a nice javascript file soon but for right now it's just easier for me to see it on the same page as the actual code.
-
-  var userLocation=$("#user-location")[0];
-  var lat = null;
-  var lon = null;
-  var mapsBaseUrl= "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
-  var googleKey="AIzaSyAhdYCfKZwTBbDA5PxY_bj_bXtEKF2xLAc"
-
-  function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-    } else {
-        userLocation.innerHTML = "Geolocation is not supported by this browser.";
-    }
-  }
-
-  function showPosition(position) {
-    lat = position.coords.latitude;
-    lon = position.coords.longitude;
-    returned_data=null;
-    $.ajax({
-      url: mapsBaseUrl+lat+","+lon+"&key="+googleKey,
-      method: 'GET',
-      success: function (locationData, status){
-        var neighborhood=null;
-        var city=null
-
-        for (i = 0; i < locationData.results.length; i++) {
-          for (z=0; z < locationData.results[i].types.length; z++){
-            if (locationData.results[i].types[z] === "neighborhood"){
-              var locationDataResults=locationData.results[i]["formatted_address"];
-              userLocation.innerHTML=locationDataResults.split(/,/)[1]+" > "+locationDataResults.split(/,/)[0];
-              return;
-            }
-          }
-        };
-      }
-    })
-  }
-
-
-
-  getLocation();
-
-  $("#dnw-button").click(function(){
-    $.ajax({
-      url: "/recommendations",
-      method: "POST",
-      dataType: "json",
-      data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
-      success: function(apiData, status){
-        $("#rec-response-h1")[0].style="display:block;"
-        $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+apiData.url+"'>"+apiData.name+"</a>";
-        $("#dislike-button")[0].style="display:block;";
-        $("#new-search-button")[0].style="display:block;";
-        $("#welcome-questions")[0].style="display:none;";
-      }
-    })
-  })
-
-  $("#result-wrapA").click(function(){
-    $.ajax({
-      url: "/new-recommendation",
-      method: "GET",
-      dataType: "json",
-      success: function(newRecommendation, status){
-        $("#rec-response-h1")[0].innerHTML="<a target='_blank' href='"+newRecommendation.url+"'>"+newRecommendation.name+"</a>";
-      }
-    })
-  })
-
-  $("#result-wrapB").click(function(){
-    $("#welcome-questions")[0].style="display: block;";
-    $("#do-not-want")[0].value="";
-    $("#dislike-button")[0].style="display:none;";
-    $("#new-search-button")[0].style="display:none;";
-    $("#rec-response-h1")[0].style="display:none;"
-  })
-
-</script>
+  </div>
+</div>
+<div class="col-md-4 col-md-offset-4" id="loading">
+  <div class="spinner">
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+    <span style="right: -5px;">Loading</span>
+  </div>
+</div>
+<div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
+  <div id="new-search-button" style="display: none;">
+</div>
+<div id="result-wrapB">
+  <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
+</div>
+<div id="like_button">
+  <% if logged_in? %>
+  <button type="button" class="btn btn-default btn-lg" align="center">
+    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+  </button>
+  <% end %>
+</div>

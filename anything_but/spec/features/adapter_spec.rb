@@ -1,6 +1,11 @@
 require 'rails_helper'
+require 'capybara/rails'
+require 'spec_helper'
+require 'vcr'
 
 describe Adapter, type: :model do
+
+  let(:client){Adapter::YelpWrapper.new}
 
   rec1 = Recommendation.create(name: 'Cool Bar')
   rec2 = Recommendation.create(name: 'Enriching Museum')
@@ -14,11 +19,18 @@ describe Adapter, type: :model do
   rec2.activities << activity2
   rec3.activities << activity3
 
-  it 'it returns a filtered array of recommendations based on user input term' do
+
+  it 'returns an array of nearby businesses of pre-approved categories when given longitude and latitude' do
+    VCR.use_cassette('yelp/initiate_api_request') do
+      test_rec_array=client.initiate_api_req(40.7, -74, client.categories)
+      expect(test_rec_array).not_to be_empty
+    end
+  end
+  it 'returns a filtered array of recommendations based on user input term' do
     test_array = [rec1, rec2, rec3]
     search_term = activity2.name
-    test_adapter = Adapter::YelpWrapper.new
-    test_adapter_output = test_adapter.filter_api(test_array, search_term)
+    test_adapter_output = client.filter_api(test_array, search_term)
     expect(test_adapter_output).not_to include(rec2)
   end
+
 end
