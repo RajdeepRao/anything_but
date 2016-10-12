@@ -5,25 +5,24 @@ class RecommendationsController < ApplicationController
 
   def create
     yelp = Adapter::YelpWrapper.new
+    nearby_recs=[]
 
-
-    if Recommendation.previous_search == false
-      recommendation_array = yelp.initiate_api_req(params["latitude"], params["longitude"], yelp.categories)
-      Recommendation.previous_search = true
-      recommendation_array.flatten!.each do |one_rec|
-        unless Recommendation.find_by(name: one_rec.name)
-          rec=Recommendation.new(name:one_rec.name, url:one_rec.url)
-          one_rec.categories.each do |category_array|
-            if Activity.all.any?{|activity|activity.name==category_array[0]}
-              rec.activities<<Activity.find_by(name:category_array[0])
-              rec.save
-            end
+    recommendation_array = yelp.initiate_api_req(params["latitude"], params["longitude"], yelp.categories)
+    Recommendation.previous_search = true
+    recommendation_array.flatten!.each do |one_rec|
+      unless Recommendation.find_by(url: one_rec.url)
+        rec=Recommendation.new(name:one_rec.name, url:one_rec.url)
+        one_rec.categories.each do |category_array|
+          if Activity.all.any?{|activity|activity.name==category_array[0]}
+            rec.activities<<Activity.find_by(name:category_array[0])
+            rec.save
           end
         end
       end
+      nearby_recs<<Recommendation.all.find_by(url: one_rec.url)
     end
 
-    Recommendation.filtered_array=(yelp.filter_api(Recommendation.all, params['doNotWant'])) #the filtered array of rec objects
+    Recommendation.filtered_array=(yelp.filter_api(nearby_recs, params['doNotWant'])) #the filtered array of rec objects
 
 
     #we could theoretically make line 16 through 21 wrapped inside a SQL method?

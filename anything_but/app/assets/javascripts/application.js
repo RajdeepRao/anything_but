@@ -25,6 +25,9 @@ $( document ).ready(function() {
   var lon = null;
   var mapsBaseUrl= "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
   var googleKey="AIzaSyAhdYCfKZwTBbDA5PxY_bj_bXtEKF2xLAc"
+  var userCity=null;
+  var userNeighborhood=null;
+
   function getLocation() {
       $(".spinner").show();
     if (navigator.geolocation) {
@@ -50,6 +53,8 @@ $( document ).ready(function() {
             if (locationData.results[i].types[z] === "neighborhood"){
               var locationDataResults=locationData.results[i]["formatted_address"];
               userLocation.innerHTML=locationDataResults.split(/,/)[1]+" > "+locationDataResults.split(/,/)[0];
+              userCity=locationDataResults.split(/,/)[1];
+              userNeighborhood=locationDataResults.split(/,/)[0];
               return;
             }
           }
@@ -65,7 +70,7 @@ $( document ).ready(function() {
       url: "/recommendations",
       method: "POST",
       dataType: "json",
-      data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val()},
+      data: {latitude:lat, longitude:lon, doNotWant:$("#do-not-want").val(), city: userCity, neighborhood: userNeighborhood},
       success: function(apiData, status){
         $(".spinner").hide();
         $("#rec-response-h1")[0].style="display:block;"
