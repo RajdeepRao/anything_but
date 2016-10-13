@@ -28,8 +28,10 @@ class Adapter
     def filter_api(recommendations, doNotWant)
       filter_array = []
       recommendations.each do |business|
-        unless business.activities.any?{|activity| activity.name==doNotWant}
-          filter_array<<business
+        if business != nil
+          unless business.activities.any?{|activity| activity.name==doNotWant}
+            filter_array<<business
+          end
         end
       end
         filter_array
