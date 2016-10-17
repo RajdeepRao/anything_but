@@ -1,9 +1,18 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A rails based web application that utilizes HTML5 geolocator and the googlemaps API to interface with the Yelp API gem. 
 
-Things you may want to cover:
+This application filters activity requests based on what a user dislikes. 
+
+# Getting Started 
+
+After cloning the repository, create and migrate the database and run the rails server: ``` rails s ```
+
+## Trouble Shooting 
+
+Make sure that you have enabled the geolocator with your browswer otherwise the application will continually search for a location and will not enable the other functionality
+
+
 
 * Ruby version
 
