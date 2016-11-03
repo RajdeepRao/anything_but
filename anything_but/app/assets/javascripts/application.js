@@ -31,7 +31,7 @@ $( document ).ready(function() {
   function getLocation() {
       $(".spinner").show();
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
+        navigator.geolocation.getCurrentPosition(showPosition, noGeolocate);
     } else {
         userLocation.innerHTML = "Geolocation is not supported by this browser.";
     }
@@ -62,6 +62,13 @@ $( document ).ready(function() {
       }
     })
   }
+
+  function noGeolocate(){
+    setTimeout(function(){
+      alert("We couldn't find you! Refresh the page and allow location sharing. If that doesn't work check your browser's privacy settings.")
+    }, 3000)
+  }
+
   getLocation();
   $("#dnw-button").click(function(){
     $(".spinner").show();
