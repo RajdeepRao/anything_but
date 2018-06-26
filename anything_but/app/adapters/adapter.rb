@@ -11,6 +11,7 @@ class Adapter
                                 token_secret: ENV["YELP_TOKEN_SECRET"]
                               })
       @categories = ['active', 'arts', 'nightlife']
+      #yelp has far too many categories so we only really care about these three categories otherwise too many options
     end
 
 
