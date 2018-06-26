@@ -26,7 +26,6 @@ class RecommendationsController < ApplicationController
 
 
     #we could theoretically make line 16 through 21 wrapped inside a SQL method?
-    # binding.pry
     recommendation=Recommendation.filtered_array.sample
         respond_to do |f|
           f.json {
@@ -37,7 +36,6 @@ class RecommendationsController < ApplicationController
 
 
   def show
-    ## NEED TO FIND A WAY TO GIVE SHOW ACCESS TO THE FILTERED ARRAY.
     recommendation=Recommendation.filtered_array.sample
     respond_to do |f|
       f.json {
