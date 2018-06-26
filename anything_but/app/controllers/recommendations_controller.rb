@@ -1,7 +1,6 @@
 class RecommendationsController < ApplicationController
 
 
-## CREATE VARIABLES FOR PREVIOUS SEARCH AND FILTERED!!!
 
   def create
     yelp = Adapter::YelpWrapper.new
@@ -25,7 +24,7 @@ class RecommendationsController < ApplicationController
     Recommendation.filtered_array=(yelp.filter_api(nearby_recs, params['doNotWant'])) #the filtered array of rec objects
 
 
-    #we could theoretically make line 16 through 21 wrapped inside a SQL method?
+    #we could make line 16 through 21 wrapped inside a SQL method?
     recommendation=Recommendation.filtered_array.sample
         respond_to do |f|
           f.json {
