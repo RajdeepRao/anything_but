@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'vcr'
 
 describe Adapter, type: :model do
-
+#tests API response GIVEN working Long & Lat
   let(:client){Adapter::YelpWrapper.new}
 
   rec1 = Recommendation.create(name: 'Cool Bar')
