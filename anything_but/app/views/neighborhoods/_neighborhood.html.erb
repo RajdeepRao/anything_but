@@ -1,0 +1,7 @@
+<%= form_for :neighborhoods do |f|%>
+  <%= f.label "Where Would You Go?"  %>
+  <br>
+  <%= f.collection_check_boxes :neighborhood_id, Neighborhood.all, :id, :name %>
+  <br>
+  <%= f.submit "Select Neighborhoods" %>
+<% end %>

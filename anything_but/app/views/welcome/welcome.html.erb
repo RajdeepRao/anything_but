@@ -1,0 +1,44 @@
+<div id="location">
+<p id="user-location"></p>
+</div>
+<div id="welcome-questions">
+  <div id="page-wrapper">
+    <h1> ANYTHING BUT</h1>
+    <br>
+    <h5 style="text-align: center">Type the name of a place you don't want to go ("Cinema", "Parks", etc), then choose the closest match and hit "Go"!</h5>
+  </div>
+  <div id="input-box" style="display: none;">
+    <%= render 'activities/do_not_want_activity' %>
+  </div>
+</div>
+<div id="page-wrapper">
+  <div id="rec-response-div">
+    <div id="response-wrapper">
+    <h2 id="rec-response-h1"><h2>
+    </div>
+  </div>
+</div>
+<div class="col-md-4 col-md-offset-4" id="loading">
+  <div class="spinner">
+    <div class="sk-folding-cube">
+      <div class="sk-cube1 sk-cube"></div>
+      <div class="sk-cube2 sk-cube"></div>
+      <div class="sk-cube4 sk-cube"></div>
+      <div class="sk-cube3 sk-cube"></div>
+    </div>
+    <span style="right: -5px;">Loading</span>
+  </div>
+</div>
+<div id="dislike-button" style="display: none;"><%= render "activities/i_hate_that" %><div>
+  <div id="new-search-button" style="display: none;">
+</div>
+<div id="result-wrapB">
+  <button style="button" class="btn btn-default btn-lg btn-block">New Search!</button>
+</div>
+<div id="like_button">
+  <% if logged_in? %>
+  <button type="button" class="btn btn-default btn-lg" align="center">
+    <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
+  </button>
+  <% end %>
+</div>

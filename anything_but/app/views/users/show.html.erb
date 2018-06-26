@@ -1,0 +1,14 @@
+<h2>Hello, <%= @user.username %></h1>
+<br>
+<body>
+
+  <ul style="list-style: none;">
+    <% @user.recommendations.each do |rec| %>
+      <li class="liked_place"><p> <span class="glyphicon glyphicon-heart"></span>  <%= link_to rec.name, rec.url, :target => "_blank" %></span></p></li>
+    <% end %>
+  </ul>
+
+  <br>
+  <br>
+  <%= link_to 'Delete Account', user_path(current_user), method: "delete" %>
+</body>
