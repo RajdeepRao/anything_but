@@ -19,6 +19,7 @@ class RecommendationsController < ApplicationController
         end
       end
       nearby_recs<<Recommendation.all.find_by(url: one_rec.url)
+      #array of all the activity recommendations nearby 
     end
 
     Recommendation.filtered_array=(yelp.filter_api(nearby_recs, params['doNotWant'])) #the filtered array of rec objects
